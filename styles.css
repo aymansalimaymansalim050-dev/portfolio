@@ -207,6 +207,14 @@ img { max-width: 100%; display: block; }
 }
 .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
+.nav-icons { display: flex; gap: var(--space-3); }
+.nav-icon-link {
+  display: flex;
+  color: var(--ink-soft);
+  transition: color var(--transition);
+}
+.nav-icon-link:hover { color: var(--accent); }
+
 .nav-toggle {
   display: flex;
   flex-direction: column;
@@ -364,6 +372,29 @@ img { max-width: 100%; display: block; }
 .project-links { display: flex; gap: var(--space-4); margin-top: var(--space-4); }
 .project-links a { font-weight: 600; font-size: var(--step-sm); color: var(--ink); }
 .project-links a:hover { color: var(--accent); }
+
+.tag-status { color: var(--ink-soft); background: var(--line); }
+
+.project-features {
+  list-style: disc;
+  margin: 0 0 var(--space-4);
+  padding-left: 1.2em;
+  font-size: var(--step-sm);
+  color: var(--ink-soft);
+}
+.project-features li { padding-block: 2px; }
+
+.project-status {
+  font-size: var(--step-sm);
+  color: var(--ink-faint);
+  font-style: italic;
+  margin: 0;
+}
+
+/* The one project card called out as the strongest/most complete concept —
+   full-width so it reads as the headline piece, not just another card. */
+.project-featured { grid-column: 1 / -1; }
+.project-featured h3 { font-size: var(--step-xl); }
 
 /* ==========================================================================
    ABOUT

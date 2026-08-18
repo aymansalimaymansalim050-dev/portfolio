@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ayman salim — Front-End Developer</title>
-  <meta name="description" content="Portfolio of ayman salim, a front-end developer building fast, accessible web interfaces with clean, maintainable code.">
+  <meta name="description" content="Front-end developer specializing in React and TypeScript, building fast, responsive, and accessible web interfaces.">
+  <link rel="canonical" href="https://ayman-salim.vercel.app/">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <!-- Social preview card (Facebook, WhatsApp, LinkedIn, etc.) -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ayman-salim.vercel.app/">
   <meta property="og:title" content="ayman salim — Front-End Developer">
-  <meta property="og:description" content="Portfolio of ayman salim, a front-end developer building fast, accessible web interfaces with clean, maintainable code.">
+  <meta property="og:description" content="Front-end developer specializing in React and TypeScript, building fast, responsive, and accessible web interfaces.">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ayman salim — Front-End Developer">
-  <meta name="twitter:description" content="Portfolio of ayman salim, a front-end developer building fast, accessible web interfaces with clean, maintainable code.">
+  <meta name="twitter:description" content="Front-end developer specializing in React and TypeScript, building fast, responsive, and accessible web interfaces.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +44,18 @@
         <a href="#about" data-i18n="navAbout">About</a>
         <a href="#skills" data-i18n="navSkills">Skills</a>
         <a href="#contact" class="nav-cta" data-i18n="navContact">Contact</a>
+
+        <div class="nav-icons">
+          <a href="https://github.com/aymansalimaymansalim050-dev" class="nav-icon-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.95.1-.75.4-1.25.72-1.53-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.77.12 3.06.74.8 1.19 1.83 1.19 3.09 0 4.43-2.7 5.41-5.27 5.7.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/aymansalim-aymansalim-318a273a3/" class="nav-icon-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.59 0 4.27 2.36 4.27 5.44v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.56V9H3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+          </a>
+        </div>
+
         <!-- Language toggle: swaps text via data-i18n attributes in script.js, no page reload -->
-        <button class="lang-toggle" id="langToggle" type="button">ES</button>
+        <button class="lang-toggle" id="langToggle" type="button">EN</button>
       </nav>
     </div>
   </header>
@@ -54,7 +66,7 @@
     <section id="top" class="hero">
       <div class="wrap hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="heroEyebrow">Front-End Developer</p>
+          <p class="eyebrow" data-i18n="heroEyebrow">Front-End Developer — React &amp; TypeScript</p>
           <h1 data-i18n="heroHeadline">I build interfaces that are fast, accessible, and easy to maintain.</h1>
           <p class="hero-lede" data-i18n="heroLede">
             I turn designs into responsive, production-ready interfaces —
@@ -63,6 +75,7 @@
           <div class="hero-actions">
             <a href="#work" class="btn btn-primary" data-i18n="heroCtaWork">See my work</a>
             <a href="#contact" class="btn btn-ghost" data-i18n="heroCtaContact">Get in touch</a>
+            <a href="https://github.com/aymansalimaymansalim050-dev" class="btn btn-ghost" data-i18n="heroCtaGithub">GitHub</a>
           </div>
         </div>
 
@@ -98,59 +111,71 @@
             block (or paste over an example one below), then:
               1. Swap the <div class="project-media"> for a real screenshot:
                  <img src="images/your-project.png" alt="Screenshot of Your Project">
-              2. Update the tags, <h3> title, and <p data-i18n="..."> description
+              2. Update the tags, <h3> title, feature list, and <p data-i18n="..."> description
                  (give it its own data-i18n key and add EN/ES text for it in script.js).
-              3. Point "Live site" at your deployed URL (e.g. Netlify/GitHub Pages)
-                 and "Source" at the GitHub repo.
+              3. Remove the .status-badge and .project-status paragraph — the project is real now.
+              4. Replace the .project-status paragraph with the actual links, e.g.:
+                 <div class="project-links">
+                   <a href="PROJECT_LIVE_URL" data-i18n="linkLiveSite">Live site →</a>
+                   <a href="PROJECT_GITHUB_URL" data-i18n="linkSource">Source →</a>
+                 </div>
+                 (swap PROJECT_LIVE_URL / PROJECT_GITHUB_URL for the real deploy + repo URLs)
           -->
-          <article class="project-card">
+          <article class="project-card project-featured">
             <div class="project-media" aria-hidden="true"></div>
             <div class="project-body">
               <div class="project-tags">
-                <span class="tag">JavaScript</span>
-                <span class="tag">Fetch API</span>
-                <span class="tag">CSS Grid</span>
-              </div>
-              <h3>Weatherly</h3>
-              <p data-i18n="project1Desc">A weather lookup app that fetches live forecasts from a public API, with geolocation support and a responsive layout that adapts from a single card to a multi-day grid.</p>
-              <div class="project-links">
-                <a href="#" data-i18n="linkLiveSite">Live site →</a>
-                <a href="#" data-i18n="linkSource">Source →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media" aria-hidden="true"></div>
-            <div class="project-body">
-              <div class="project-tags">
-                <span class="tag">JavaScript</span>
-                <span class="tag">Web Storage API</span>
-                <span class="tag">Drag &amp; Drop</span>
-              </div>
-              <h3>Habit Streak</h3>
-              <p data-i18n="project2Desc">A daily habit tracker that saves progress to local storage, with a streak calendar and a drag-to-reorder habit list — no backend, no build step.</p>
-              <div class="project-links">
-                <a href="#" data-i18n="linkLiveSite">Live site →</a>
-                <a href="#" data-i18n="linkSource">Source →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media" aria-hidden="true"></div>
-            <div class="project-body">
-              <div class="project-tags">
+                <span class="tag tag-status">Concept</span>
                 <span class="tag">React</span>
                 <span class="tag">REST API</span>
                 <span class="tag">Context API</span>
               </div>
               <h3>Shopfront</h3>
               <p data-i18n="project3Desc">A product catalog built with React, pulling live data from a public REST API. Includes category filtering, a persistent cart via Context, and a fully responsive grid.</p>
-              <div class="project-links">
-                <a href="#" data-i18n="linkLiveSite">Live site →</a>
-                <a href="#" data-i18n="linkSource">Source →</a>
+              <ul class="project-features">
+                <li data-i18n="project3Feat1">Category filtering across the full catalog</li>
+                <li data-i18n="project3Feat2">Persistent cart state via React Context</li>
+                <li data-i18n="project3Feat3">Fully responsive product grid</li>
+              </ul>
+              <p class="project-status" data-i18n="projectStatusConcept">Concept — not built yet. Live demo and source links will go here once it ships.</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="tag tag-status">Concept</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Fetch API</span>
+                <span class="tag">CSS Grid</span>
               </div>
+              <h3>Weatherly</h3>
+              <p data-i18n="project1Desc">A weather lookup app that fetches live forecasts from a public API, with geolocation support and a responsive layout that adapts from a single card to a multi-day grid.</p>
+              <ul class="project-features">
+                <li data-i18n="project1Feat1">Live forecast lookup by city or geolocation</li>
+                <li data-i18n="project1Feat2">Responsive layout: single card → multi-day grid</li>
+              </ul>
+              <p class="project-status" data-i18n="projectStatusConcept">Concept — not built yet. Live demo and source links will go here once it ships.</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="tag tag-status">Concept</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Web Storage API</span>
+                <span class="tag">Drag &amp; Drop</span>
+              </div>
+              <h3>Habit Streak</h3>
+              <p data-i18n="project2Desc">A daily habit tracker that saves progress to local storage, with a streak calendar and a drag-to-reorder habit list — no backend, no build step.</p>
+              <ul class="project-features">
+                <li data-i18n="project2Feat1">Streak calendar backed by Web Storage</li>
+                <li data-i18n="project2Feat2">Drag-to-reorder habit list</li>
+              </ul>
+              <p class="project-status" data-i18n="projectStatusConcept">Concept — not built yet. Live demo and source links will go here once it ships.</p>
             </div>
           </article>
 
@@ -166,17 +191,18 @@
           <h2 data-i18n="aboutHeading">A little about how I work</h2>
           <!-- REPLACE: your real bio, 2–3 short paragraphs -->
           <p data-i18n="aboutBio1">
-            I'm a front-end developer who cares as much about how an
-            interface feels to use as how the code behind it reads a year
-            from now. I like small, well-tested components over clever
-            one-off solutions, and I write things down so the next person —
-            often future me — doesn't have to guess.
+            I'm a front-end developer based in Toledo, and I care about the
+            part of the job most people skip past: does this layout hold up
+            on every screen, can someone using only a keyboard actually get
+            through it, does the markup make sense to someone reading it
+            cold. That's the work I enjoy.
           </p>
           <p data-i18n="aboutBio2">
-            Outside of shipping features, I'm usually learning something
-            adjacent: accessibility patterns, a new CSS layout technique, or
-            just reading through a library's source to understand a decision
-            it made.
+            Right now I'm deep in React and TypeScript, turning project
+            ideas into things that actually run in a browser instead of
+            staying sketches. I'm looking for a junior front-end role or
+            freelance work where I can keep building — and keep getting
+            better at it.
           </p>
         </div>
         <div class="about-facts">
@@ -204,30 +230,31 @@
 
         <div class="skills-grid">
           <div class="skill-group">
-            <h3 data-i18n="skillsLanguages">Languages</h3>
+            <h3 data-i18n="skillsCore">Core</h3>
             <ul>
-              <li>JavaScript (ES6+)</li>
+              <li>JavaScript</li>
               <li>TypeScript</li>
-              <li>HTML &amp; CSS</li>
-              <li>Sass</li>
+              <li>React</li>
+              <li>HTML</li>
+              <li>CSS</li>
             </ul>
           </div>
           <div class="skill-group">
-            <h3 data-i18n="skillsFrameworks">Frameworks &amp; tools</h3>
+            <h3 data-i18n="skillsTools">Tools</h3>
             <ul>
-              <li>React</li>
-              <li>Node.js</li>
-              <li>Git &amp; GitHub</li>
+              <li>Git</li>
+              <li>GitHub</li>
               <li>Vite</li>
+              <li>Vitest / Jest</li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 data-i18n="skillsPractices">Practices</h3>
             <ul>
               <li data-i18n="practiceResponsive">Responsive design</li>
-              <li data-i18n="practiceAccessibility">Accessibility (WCAG)</li>
-              <li data-i18n="practiceTesting">Testing (Vitest/Jest)</li>
+              <li data-i18n="practiceAccessibility">Accessibility</li>
               <li data-i18n="practiceRest">REST APIs</li>
+              <li data-i18n="practiceTesting">Testing</li>
             </ul>
           </div>
         </div>
@@ -247,6 +274,8 @@
         <div class="contact-links">
           <a href="https://github.com/aymansalimaymansalim050-dev">GitHub</a>
           <a href="https://www.linkedin.com/in/aymansalim-aymansalim-318a273a3/">LinkedIn</a>
+          <!-- PLACEHOLDER: no resume PDF yet. To add one: drop your PDF in this
+               folder (e.g. resume.pdf) and change href="#" to href="resume.pdf" -->
           <a href="#" data-i18n="contactResume">Resume (PDF)</a>
         </div>
       </div>
