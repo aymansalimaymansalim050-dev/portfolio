@@ -210,8 +210,8 @@ function applyLanguage(lang) {
   document.title = dict.pageTitle;
   metaDescription.setAttribute('content', dict.pageDescription);
 
-  // Button always shows the language you'd switch TO, not the current one.
-  langToggle.textContent = lang === 'en' ? 'ES' : 'EN';
+  // Button shows the CURRENT language, so it always matches what's on screen.
+  langToggle.textContent = lang.toUpperCase();
 
   localStorage.setItem('lang', lang);
 }
