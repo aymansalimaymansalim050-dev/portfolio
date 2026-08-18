@@ -30,10 +30,25 @@
   --shadow-md: 0 10px 28px -14px rgba(18, 18, 28, 0.22);
   --shadow-lg: 0 24px 56px -20px rgba(18, 18, 28, 0.28);
   --shadow-accent: 0 14px 32px -14px rgba(79, 70, 229, 0.45);
+  --shadow-accent-hover: 0 20px 40px -16px rgba(67, 56, 202, 0.55);
+
+  /* Glow: one soft + one strong value per accent color, reused everywhere a
+     decorative radial gradient is needed (hero, project placeholders,
+     contact) instead of tuning a one-off opacity per section. */
+  --glow-1: rgba(79, 70, 229, 0.18);
+  --glow-1-strong: rgba(79, 70, 229, 0.32);
+  --glow-2: rgba(6, 182, 212, 0.15);
+  --glow-2-strong: rgba(6, 182, 212, 0.24);
+
+  /* Motion: hover "lift" scales with element size, but always from this
+     fixed set — never a one-off translateY value. */
+  --lift-sm: -1px;
+  --lift-md: -2px;
+  --lift-lg: -4px;
 
   /* Type */
   --font-display: "Space Grotesk", sans-serif;
-  --font-body: "IBM Plex Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
   /* Fluid type scale: clamp(min, preferred, max) so text scales smoothly
@@ -179,9 +194,9 @@ img { max-width: 100%; display: block; }
   color: #fff;
   box-shadow: var(--shadow-accent);
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -16px rgba(67, 56, 202, 0.55); }
+.btn-primary:hover { transform: translateY(var(--lift-md)); box-shadow: var(--shadow-accent-hover); }
 .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--bg-raised); }
-.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(var(--lift-md)); box-shadow: var(--shadow-sm); }
 .btn-large { padding: var(--space-4) var(--space-8); font-size: var(--step-lg); max-width: 100%; }
 
 @media (max-width: 480px) {
@@ -219,9 +234,20 @@ img { max-width: 100%; display: block; }
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--step-lg);
+}
+.logo::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  flex-shrink: 0;
 }
 
 .primary-nav {
@@ -255,7 +281,7 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow-accent);
   transition: transform var(--transition), box-shadow var(--transition);
 }
-.primary-nav a.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 16px 32px -14px rgba(67, 56, 202, 0.5); color: #fff; }
+.primary-nav a.nav-cta:hover { transform: translateY(var(--lift-sm)); box-shadow: var(--shadow-accent-hover); color: #fff; }
 
 .lang-toggle {
   font-family: var(--font-mono);
@@ -276,7 +302,7 @@ img { max-width: 100%; display: block; }
   color: var(--ink-soft);
   transition: color var(--transition), transform var(--transition);
 }
-.nav-icon-link:hover { color: var(--accent); transform: translateY(-2px) scale(1.08); }
+.nav-icon-link:hover { color: var(--accent); transform: translateY(var(--lift-md)) scale(1.08); }
 
 .nav-toggle {
   display: flex;
@@ -328,8 +354,8 @@ img { max-width: 100%; display: block; }
   position: relative;
   padding-block: var(--space-16) var(--space-24);
   background:
-    radial-gradient(480px circle at 88% -10%, rgba(79, 70, 229, 0.20), transparent 70%),
-    radial-gradient(380px circle at -5% 110%, rgba(6, 182, 212, 0.16), transparent 70%),
+    radial-gradient(480px circle at 88% -10%, var(--glow-1), transparent 70%),
+    radial-gradient(380px circle at -5% 110%, var(--glow-2), transparent 70%),
     linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 42px 42px,
     linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 42px 42px,
     var(--bg);
@@ -422,7 +448,7 @@ img { max-width: 100%; display: block; }
 .project-card:hover::before { transform: scaleX(1); }
 .project-card:hover {
   border-color: var(--accent);
-  transform: translateY(-4px);
+  transform: translateY(var(--lift-lg));
   box-shadow: var(--shadow-lg);
 }
 
@@ -430,13 +456,23 @@ img { max-width: 100%; display: block; }
   position: relative;
   aspect-ratio: 16 / 10;
   background:
-    radial-gradient(120% 140% at 15% 15%, rgba(79, 70, 229, 0.16), transparent 60%),
-    radial-gradient(120% 140% at 85% 85%, rgba(6, 182, 212, 0.14), transparent 60%),
+    radial-gradient(120% 140% at 15% 15%, var(--glow-1), transparent 60%),
+    radial-gradient(120% 140% at 85% 85%, var(--glow-2), transparent 60%),
     linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 24px 24px,
     linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 24px 24px,
     var(--surface);
   border-bottom: 1px solid var(--line);
   /* Placeholder pattern — swap for a real project screenshot: <img> instead of this div. */
+}
+.project-media::after {
+  /* A faint dashed inner frame — an intentional "preview coming soon" motif,
+     not a fake screenshot. Disappears with the div once a real <img> is used. */
+  content: '';
+  position: absolute;
+  inset: var(--space-4);
+  border: 1.5px dashed var(--line);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
 }
 .project-media::before {
   /* Shows 01 / 02 / 03 while the placeholder pattern is in use. Once you
@@ -542,7 +578,9 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   min-width: 128px;
+  transition: border-color var(--transition), transform var(--transition);
 }
+.fact:hover { border-color: var(--accent); transform: translateY(var(--lift-sm)); }
 .fact-num {
   font-family: var(--font-display);
   font-size: var(--step-xl);
@@ -594,7 +632,7 @@ img { max-width: 100%; display: block; }
   font-size: var(--step-sm);
   transition: border-color var(--transition), color var(--transition), transform var(--transition);
 }
-.skill-group li:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+.skill-group li:hover { border-color: var(--accent); color: var(--accent); transform: translateY(var(--lift-sm)); }
 
 /* ==========================================================================
    CONTACT
@@ -612,8 +650,8 @@ img { max-width: 100%; display: block; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(600px circle at 20% 0%, rgba(79, 70, 229, 0.35), transparent 60%),
-    radial-gradient(520px circle at 85% 100%, rgba(6, 182, 212, 0.22), transparent 60%);
+    radial-gradient(600px circle at 20% 0%, var(--glow-1-strong), transparent 60%),
+    radial-gradient(520px circle at 85% 100%, var(--glow-2-strong), transparent 60%);
   pointer-events: none;
 }
 .contact-inner { position: relative; text-align: center; }
@@ -627,17 +665,32 @@ img { max-width: 100%; display: block; }
 }
 
 .contact .btn-primary { background: var(--bg-raised); color: var(--ink); box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.5); }
-.contact .btn-primary:hover { background: #fff; box-shadow: 0 20px 48px -16px rgba(0, 0, 0, 0.6); }
+.contact .btn-primary:hover { background: #fff; transform: translateY(var(--lift-md)); box-shadow: 0 20px 48px -16px rgba(0, 0, 0, 0.6); }
 
 .contact-links {
   position: relative;
   display: flex;
-  gap: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-3);
   justify-content: center;
   margin-top: var(--space-8);
 }
-.contact-links a { font-size: var(--step-sm); color: #C7C9CE; font-weight: 500; transition: color var(--transition), transform var(--transition); }
-.contact-links a:hover { color: var(--bg); transform: translateY(-2px); }
+.contact-links a {
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: var(--step-sm);
+  color: #C7C9CE;
+  font-weight: 500;
+  transition: color var(--transition), transform var(--transition), border-color var(--transition), background var(--transition);
+}
+.contact-links a:hover {
+  color: var(--bg);
+  border-color: var(--accent-2);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(var(--lift-sm));
+}
 
 /* ==========================================================================
    FOOTER / STATUS BAR
