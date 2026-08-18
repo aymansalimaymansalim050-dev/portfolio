@@ -1,0 +1,453 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Everything visual is derived from these variables. Change a value here
+   and it updates everywhere it's used — this is what keeps a site looking
+   consistent instead of drifting as it grows.
+   ========================================================================== */
+:root {
+  /* Color */
+  --bg: #F7F7F4;
+  --bg-raised: #FFFFFF;
+  --ink: #15171C;
+  --ink-soft: #52565F;
+  --ink-faint: #6B6E76;
+  --accent: #2F5D50;
+  --accent-soft: #E4EDE9;
+  --line: #DEDCD3;
+
+  /* Type */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Fluid type scale: clamp(min, preferred, max) so text scales smoothly
+     between mobile and desktop instead of jumping at breakpoints. */
+  --step-sm: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);
+  --step-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --step-lg: clamp(1.15rem, 1.1rem + 0.3vw, 1.35rem);
+  --step-xl: clamp(1.6rem, 1.4rem + 1vw, 2.1rem);
+  --step-2xl: clamp(2.1rem, 1.7rem + 2vw, 3.4rem);
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --radius: 3px;
+  --max-width: 1120px;
+  --transition: 160ms ease;
+}
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0; }
+p { margin: 0 0 var(--space-4); color: var(--ink-soft); }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* Visible focus ring for keyboard users — never remove this without
+   replacing it with something equally visible. Mouse users don't see it
+   because we scope it to :focus-visible. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  background: var(--ink);
+  color: var(--bg);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  z-index: 100;
+  transition: top var(--transition);
+}
+.skip-link:focus { top: var(--space-4); }
+
+.wrap {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+/* Scroll reveal: sections fade + rise into place the first time they enter
+   the viewport (see the IntersectionObserver in script.js). The hidden state
+   only applies once script.js adds "js-ready" to <html> — so if JS fails to
+   load, .reveal elements are just normal, fully-visible content. */
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.js-ready .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--step-sm);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--space-3);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: var(--step-base);
+  border: 1px solid transparent;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.btn-primary { background: var(--ink); color: var(--bg); }
+.btn-primary:hover { background: var(--accent); }
+.btn-ghost { border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-large { padding: var(--space-4) var(--space-8); font-size: var(--step-lg); }
+
+/* ==========================================================================
+   HEADER / NAV
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--step-lg);
+}
+
+.primary-nav {
+  display: none;
+  gap: var(--space-8);
+  align-items: center;
+}
+.primary-nav a { font-weight: 500; color: var(--ink-soft); transition: color var(--transition); }
+.primary-nav a:hover { color: var(--ink); }
+.primary-nav a.nav-cta {
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+}
+.primary-nav a.nav-cta:hover { border-color: var(--ink); }
+.primary-nav a.active-link { color: var(--accent); }
+
+.lang-toggle {
+  font-family: var(--font-mono);
+  font-size: var(--step-sm);
+  color: var(--ink-soft);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-1) var(--space-3);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+.lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  padding: var(--space-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu: shown as a full-width dropdown when toggled open */
+@media (max-width: 767px) {
+  .primary-nav {
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: var(--space-4) var(--space-6) var(--space-6);
+  }
+  .primary-nav.open { display: flex; }
+}
+
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+  .primary-nav { display: flex; }
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero { padding-block: var(--space-16) var(--space-24); }
+
+.hero-inner {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.hero h1 {
+  font-size: var(--step-2xl);
+  max-width: 16ch;
+  margin-bottom: var(--space-6);
+}
+
+.hero-lede { font-size: var(--step-lg); max-width: 42ch; }
+
+.hero-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-8); }
+
+.hero-meta {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-6);
+}
+.hero-meta-row {
+  display: flex;
+  justify-content: space-between;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--step-sm);
+}
+.hero-meta-row dt { font-family: var(--font-mono); color: var(--ink-faint); }
+.hero-meta-row dd { margin: 0; font-weight: 500; display: flex; align-items: center; gap: var(--space-2); }
+
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+
+@media (min-width: 900px) {
+  .hero-inner { grid-template-columns: 1.6fr 1fr; align-items: end; }
+}
+
+/* ==========================================================================
+   WORK
+   ========================================================================== */
+.work { padding-block: var(--space-24); border-top: 1px solid var(--line); }
+.work h2 { font-size: var(--step-xl); margin-bottom: var(--space-12); }
+
+.project-grid {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: 1fr;
+  counter-reset: project-counter;
+}
+
+@media (min-width: 700px) {
+  .project-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1050px) {
+  .project-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.project-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  counter-increment: project-counter;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -14px rgba(21, 23, 28, 0.25);
+}
+
+.project-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background:
+    repeating-linear-gradient(135deg, var(--accent-soft), var(--accent-soft) 10px, var(--bg-raised) 10px, var(--bg-raised) 20px);
+  border-bottom: 1px solid var(--line);
+  /* Placeholder pattern — swap for a real project screenshot: <img> instead of this div. */
+}
+.project-media::before {
+  /* Shows 01 / 02 / 03 while the placeholder pattern is in use. Once you
+     swap this div for a real <img>, the counter goes with it automatically. */
+  content: counter(project-counter, decimal-leading-zero);
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--step-xl);
+  color: var(--accent);
+  opacity: 0.35;
+}
+
+.project-body { padding: var(--space-6); }
+
+.project-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--step-sm);
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius);
+}
+
+.project-card h3 { font-size: var(--step-lg); margin-bottom: var(--space-2); }
+
+.project-links { display: flex; gap: var(--space-4); margin-top: var(--space-4); }
+.project-links a { font-weight: 600; font-size: var(--step-sm); color: var(--ink); }
+.project-links a:hover { color: var(--accent); }
+
+/* ==========================================================================
+   ABOUT
+   ========================================================================== */
+.about { padding-block: var(--space-24); border-top: 1px solid var(--line); }
+.about-inner { display: grid; gap: var(--space-12); }
+.about h2 { font-size: var(--step-xl); margin-bottom: var(--space-6); }
+
+.about-facts { display: flex; gap: var(--space-8); align-items: flex-start; }
+.fact { display: flex; flex-direction: column; }
+.fact-num { font-family: var(--font-display); font-size: var(--step-xl); font-weight: 700; color: var(--accent); }
+.fact-label { font-size: var(--step-sm); color: var(--ink-faint); }
+
+@media (min-width: 900px) {
+  .about-inner { grid-template-columns: 1.4fr 1fr; }
+}
+
+/* ==========================================================================
+   SKILLS
+   ========================================================================== */
+.skills { padding-block: var(--space-24); border-top: 1px solid var(--line); }
+.skills h2 { font-size: var(--step-xl); margin-bottom: var(--space-12); }
+
+.skills-grid { display: grid; gap: var(--space-8); grid-template-columns: 1fr; }
+@media (min-width: 700px) {
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.skill-group h3 { font-size: var(--step-base); margin-bottom: var(--space-4); }
+.skill-group li {
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: var(--step-sm);
+}
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+.contact {
+  padding-block: var(--space-24);
+  border-top: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--bg);
+}
+.contact-inner { text-align: center; }
+.contact h2 { font-size: var(--step-2xl); color: var(--bg); margin-bottom: var(--space-4); }
+.contact-lede { color: #C7C9CE; max-width: 46ch; margin-inline: auto; margin-bottom: var(--space-8); }
+.contact .eyebrow { color: #9FD8C4; }
+
+.contact .btn-primary { background: var(--bg); color: var(--ink); }
+.contact .btn-primary:hover { background: #9FD8C4; }
+
+.contact-links {
+  display: flex;
+  gap: var(--space-6);
+  justify-content: center;
+  margin-top: var(--space-8);
+}
+.contact-links a { font-size: var(--step-sm); color: #C7C9CE; font-weight: 500; transition: color var(--transition); }
+.contact-links a:hover { color: var(--bg); }
+
+/* ==========================================================================
+   FOOTER / STATUS BAR
+   Signature element: styled like an IDE status line, tracks the section
+   currently in view (see script.js).
+   ========================================================================== */
+.site-footer { background: var(--ink); border-top: 1px solid #2A2D33; }
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  font-family: var(--font-mono);
+  font-size: var(--step-sm);
+  color: #9FA1A8;
+}
+
+.status-bar-item { display: flex; align-items: center; gap: var(--space-2); }
+.status-bar-copyright { display: none; }
+.status-bar-top { color: #9FA1A8; transition: color var(--transition); }
+.status-bar-top:hover { color: var(--bg); }
+
+@media (min-width: 600px) {
+  .status-bar-copyright { display: inline; }
+}

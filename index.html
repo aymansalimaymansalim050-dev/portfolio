@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ayman salim — Front-End Developer</title>
+  <meta name="description" content="Portfolio of ayman salim, a front-end developer building fast, accessible web interfaces with clean, maintainable code.">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Social preview card (Facebook, WhatsApp, LinkedIn, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ayman salim — Front-End Developer">
+  <meta property="og:description" content="Portfolio of ayman salim, a front-end developer building fast, accessible web interfaces with clean, maintainable code.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ayman salim — Front-End Developer">
+  <meta name="twitter:description" content="Portfolio of ayman salim, a front-end developer building fast, accessible web interfaces with clean, maintainable code.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="logo">ayman salim</a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="sr-only" data-i18n="navMenu">Menu</span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav">
+        <a href="#work" data-i18n="navWork">Work</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#skills" data-i18n="navSkills">Skills</a>
+        <a href="#contact" class="nav-cta" data-i18n="navContact">Contact</a>
+        <!-- Language toggle: swaps text via data-i18n attributes in script.js, no page reload -->
+        <button class="lang-toggle" id="langToggle" type="button">ES</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section id="top" class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="heroEyebrow">Front-End Developer</p>
+          <h1 data-i18n="heroHeadline">I build interfaces that are fast, accessible, and easy to maintain.</h1>
+          <p class="hero-lede" data-i18n="heroLede">
+            I turn designs into responsive, production-ready interfaces —
+            with clean, readable code underneath.
+          </p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary" data-i18n="heroCtaWork">See my work</a>
+            <a href="#contact" class="btn btn-ghost" data-i18n="heroCtaContact">Get in touch</a>
+          </div>
+        </div>
+
+        <aside class="hero-meta" aria-label="Quick facts" data-i18n-aria="heroMetaAriaLabel">
+          <dl>
+            <div class="hero-meta-row">
+              <dt data-i18n="heroMetaBasedIn">Based in</dt>
+              <dd data-i18n="heroMetaLocation">Toledo, Spain</dd>
+            </div>
+            <div class="hero-meta-row">
+              <dt data-i18n="heroMetaFocusLabel">Focus</dt>
+              <dd data-i18n="heroMetaFocusValue">Front-end development</dd>
+            </div>
+            <div class="hero-meta-row">
+              <dt data-i18n="heroMetaStatusLabel">Status</dt>
+              <dd><span class="status-dot" aria-hidden="true"></span> <span data-i18n="heroMetaStatusValue">Open to work</span></dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section id="work" class="work">
+      <div class="wrap reveal">
+        <p class="eyebrow" data-i18n="workEyebrow">Selected work</p>
+        <h2 data-i18n="workHeading">Things I've built</h2>
+
+        <div class="project-grid">
+
+          <!--
+            TO ADD A REAL PROJECT: copy one whole <article class="project-card">…</article>
+            block (or paste over an example one below), then:
+              1. Swap the <div class="project-media"> for a real screenshot:
+                 <img src="images/your-project.png" alt="Screenshot of Your Project">
+              2. Update the tags, <h3> title, and <p data-i18n="..."> description
+                 (give it its own data-i18n key and add EN/ES text for it in script.js).
+              3. Point "Live site" at your deployed URL (e.g. Netlify/GitHub Pages)
+                 and "Source" at the GitHub repo.
+          -->
+          <article class="project-card">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Fetch API</span>
+                <span class="tag">CSS Grid</span>
+              </div>
+              <h3>Weatherly</h3>
+              <p data-i18n="project1Desc">A weather lookup app that fetches live forecasts from a public API, with geolocation support and a responsive layout that adapts from a single card to a multi-day grid.</p>
+              <div class="project-links">
+                <a href="#" data-i18n="linkLiveSite">Live site →</a>
+                <a href="#" data-i18n="linkSource">Source →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Web Storage API</span>
+                <span class="tag">Drag &amp; Drop</span>
+              </div>
+              <h3>Habit Streak</h3>
+              <p data-i18n="project2Desc">A daily habit tracker that saves progress to local storage, with a streak calendar and a drag-to-reorder habit list — no backend, no build step.</p>
+              <div class="project-links">
+                <a href="#" data-i18n="linkLiveSite">Live site →</a>
+                <a href="#" data-i18n="linkSource">Source →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">REST API</span>
+                <span class="tag">Context API</span>
+              </div>
+              <h3>Shopfront</h3>
+              <p data-i18n="project3Desc">A product catalog built with React, pulling live data from a public REST API. Includes category filtering, a persistent cart via Context, and a fully responsive grid.</p>
+              <div class="project-links">
+                <a href="#" data-i18n="linkLiveSite">Live site →</a>
+                <a href="#" data-i18n="linkSource">Source →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="about">
+      <div class="wrap about-inner reveal">
+        <div>
+          <p class="eyebrow" data-i18n="aboutEyebrow">About</p>
+          <h2 data-i18n="aboutHeading">A little about how I work</h2>
+          <!-- REPLACE: your real bio, 2–3 short paragraphs -->
+          <p data-i18n="aboutBio1">
+            I'm a front-end developer who cares as much about how an
+            interface feels to use as how the code behind it reads a year
+            from now. I like small, well-tested components over clever
+            one-off solutions, and I write things down so the next person —
+            often future me — doesn't have to guess.
+          </p>
+          <p data-i18n="aboutBio2">
+            Outside of shipping features, I'm usually learning something
+            adjacent: accessibility patterns, a new CSS layout technique, or
+            just reading through a library's source to understand a decision
+            it made.
+          </p>
+        </div>
+        <div class="about-facts">
+          <div class="fact">
+            <span class="fact-num">100%</span>
+            <span class="fact-label" data-i18n="factSemantic">semantic HTML</span>
+          </div>
+          <div class="fact">
+            <span class="fact-num">AA</span>
+            <span class="fact-label" data-i18n="factAccessible">WCAG contrast</span>
+          </div>
+          <div class="fact">
+            <span class="fact-num">Mobile</span>
+            <span class="fact-label" data-i18n="factResponsive">first design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="skills">
+      <div class="wrap reveal">
+        <p class="eyebrow" data-i18n="skillsEyebrow">Skills</p>
+        <h2 data-i18n="skillsHeading">What I work with</h2>
+
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3 data-i18n="skillsLanguages">Languages</h3>
+            <ul>
+              <li>JavaScript (ES6+)</li>
+              <li>TypeScript</li>
+              <li>HTML &amp; CSS</li>
+              <li>Sass</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 data-i18n="skillsFrameworks">Frameworks &amp; tools</h3>
+            <ul>
+              <li>React</li>
+              <li>Node.js</li>
+              <li>Git &amp; GitHub</li>
+              <li>Vite</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 data-i18n="skillsPractices">Practices</h3>
+            <ul>
+              <li data-i18n="practiceResponsive">Responsive design</li>
+              <li data-i18n="practiceAccessibility">Accessibility (WCAG)</li>
+              <li data-i18n="practiceTesting">Testing (Vitest/Jest)</li>
+              <li data-i18n="practiceRest">REST APIs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <div class="wrap contact-inner reveal">
+        <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
+        <h2 data-i18n="contactHeading">Let's work together</h2>
+        <p class="contact-lede" data-i18n="contactLede">
+          I'm currently open to new opportunities and freelance work.
+          The fastest way to reach me is email.
+        </p>
+        <a href="mailto:aymansalimaymansalim050@gmail.com" class="btn btn-primary btn-large">aymansalimaymansalim050@gmail.com</a>
+        <div class="contact-links">
+          <a href="https://github.com/aymansalimaymansalim050-dev">GitHub</a>
+          <a href="https://www.linkedin.com/in/aymansalim-aymansalim-318a273a3/">LinkedIn</a>
+          <a href="#" data-i18n="contactResume">Resume (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap status-bar">
+      <span class="status-bar-item">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="statusSection">top</span>
+      </span>
+      <span class="status-bar-item status-bar-copyright">© 2026 ayman salim</span>
+      <a class="status-bar-item status-bar-top" href="#top" data-i18n="footerBackToTop">back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
