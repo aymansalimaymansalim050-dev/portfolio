@@ -1,0 +1,598 @@
+<title>ثلاث بلانات للغرفة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@700;800&display=swap">
+<style>
+:root{
+  --paper:#EDF0EE; --sheet:#FAFBF9; --ink:#16211F; --graphite:#5A6B67;
+  --rule:#C6CFCB; --hair:#DFE5E2;
+  --accent:#0F7A66; --accent-soft:#DCEBE5; --accent-deep:#0B5A4B;
+  --clay:#B8502C; --clay-soft:#F4E1D8;
+  --floor:#F7F0E4; --grid:#E5DCCB; --wall:#2A3634;
+  --m-sleep:#EFDDBE; --m-store:#DBE3E0; --m-work:#D3E8E0; --m-tech:#2A3634;
+  --m-line:#3D4B48;
+  --shadow:0 1px 2px rgba(22,33,31,.05), 0 8px 24px -16px rgba(22,33,31,.35);
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1514; --sheet:#141D1C; --ink:#E6EDEA; --graphite:#93A5A0;
+    --rule:#2A3735; --hair:#212E2C;
+    --accent:#4FC9AC; --accent-soft:#123029; --accent-deep:#8EE3CD;
+    --clay:#E28154; --clay-soft:#33211A;
+    --floor:#1D2321; --grid:#2A312D; --wall:#8FA09B;
+    --m-sleep:#3C3222; --m-store:#26302E; --m-work:#153630; --m-tech:#CFDBD7;
+    --m-line:#A9BAB5;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1514; --sheet:#141D1C; --ink:#E6EDEA; --graphite:#93A5A0;
+  --rule:#2A3735; --hair:#212E2C;
+  --accent:#4FC9AC; --accent-soft:#123029; --accent-deep:#8EE3CD;
+  --clay:#E28154; --clay-soft:#33211A;
+  --floor:#1D2321; --grid:#2A312D; --wall:#8FA09B;
+  --m-sleep:#3C3222; --m-store:#26302E; --m-work:#153630; --m-tech:#CFDBD7;
+  --m-line:#A9BAB5;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:'IBM Plex Sans Arabic','Segoe UI',system-ui,sans-serif;
+  font-size:16px; line-height:1.72; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{
+  max-width:1200px; margin-inline:auto; background:var(--sheet);
+  border-inline:1px solid var(--rule);
+  padding:clamp(22px,4vw,60px) clamp(16px,4vw,48px) clamp(48px,6vw,84px);
+}
+h1,h2,h3{font-family:'Noto Kufi Arabic','Segoe UI',system-ui,sans-serif;font-weight:800;text-wrap:balance;margin:0;line-height:1.35}
+h1{font-size:clamp(30px,5.2vw,52px);letter-spacing:-.01em}
+h2{font-size:clamp(21px,2.8vw,29px)}
+h3{font-size:clamp(17px,2vw,20px);font-weight:700}
+p{margin:0}
+a{color:var(--accent-deep)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.eyebrow{
+  font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11.5px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+  display:flex; align-items:center; gap:10px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--rule)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+/* ---- title block ---- */
+.titleblock{display:flex;flex-direction:column;gap:18px;padding-bottom:26px;border-bottom:2px solid var(--ink)}
+.lede{max-width:62ch;color:var(--graphite);font-size:clamp(15px,1.6vw,17.5px)}
+.lede strong{color:var(--ink);font-weight:600}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:6px}
+.spec{background:var(--sheet);padding:12px 14px}
+.spec dt{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--graphite)}
+.spec dd{margin:2px 0 0;font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+
+section{padding-top:clamp(38px,5vw,62px)}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.sec-head p{color:var(--graphite);max-width:60ch}
+
+/* ---- diagnosis ---- */
+.obs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;background:var(--sheet);border:1px solid var(--rule)}
+.obs li{background:var(--sheet);outline:1px solid var(--rule);padding:16px 18px;list-style:none;display:flex;flex-direction:column;gap:5px}
+.obs b{font-weight:600;font-size:15.5px;display:flex;align-items:baseline;gap:8px}
+.obs .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:var(--clay);letter-spacing:.06em}
+.obs span{color:var(--graphite);font-size:14.5px;line-height:1.65}
+.note{
+  margin-top:22px;padding:16px 18px;border:1px dashed var(--rule);
+  background:var(--accent-soft);display:flex;gap:14px;align-items:flex-start;
+}
+.note .tag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-deep);white-space:nowrap;padding-top:4px}
+.note p{font-size:14.8px;color:var(--ink);max-width:64ch}
+
+/* ---- legend ---- */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;align-items:center}
+.legend .lab{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--graphite);margin-inline-end:4px}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 10px;
+  border:1px solid var(--rule);background:var(--sheet);color:var(--ink);
+  font:inherit;font-size:13.5px;cursor:pointer;border-radius:999px;
+}
+.chip .sw{width:12px;height:12px;border:1px solid var(--m-line);flex:none}
+.chip[data-cat="sleep"] .sw{background:var(--m-sleep)}
+.chip[data-cat="work"] .sw{background:var(--m-work)}
+.chip[data-cat="store"] .sw{background:var(--m-store)}
+.chip[data-cat="tech"] .sw{background:var(--m-tech)}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+
+/* ---- plates ---- */
+.plates{display:flex;flex-direction:column;gap:clamp(34px,5vw,56px)}
+.plate{border:1px solid var(--rule);background:var(--sheet);box-shadow:var(--shadow)}
+.plate-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:15px 20px;border-bottom:1px solid var(--rule);background:var(--accent-soft)}
+.plate-code{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;color:var(--accent-deep)}
+.plate-head h3{margin-inline-end:auto}
+.plate-thesis{color:var(--graphite);font-size:14.5px;flex-basis:100%}
+.plate-body{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:clamp(18px,2.6vw,36px);padding:clamp(18px,2.6vw,30px)}
+@media (max-width:900px){.plate-body{grid-template-columns:1fr}}
+.drawing{min-width:0}
+.drawing svg{width:100%;height:auto;display:block}
+.plan-cap{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.1em;color:var(--graphite);text-align:center;margin-top:8px}
+.notes{display:flex;flex-direction:column;gap:20px;min-width:0}
+.why{display:flex;flex-direction:column;gap:9px;margin:0;padding:0;list-style:none}
+.why li{display:flex;gap:10px;font-size:15px;line-height:1.6}
+.why .mk{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;flex:none;padding-top:2px}
+.why .plus .mk{color:var(--accent)}
+.why .minus .mk{color:var(--clay)}
+.why .minus{color:var(--graphite)}
+.subhead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--graphite);margin-bottom:9px;display:block}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.key{background:var(--sheet);padding:10px 12px}
+.key dt{font-size:11.5px;color:var(--graphite)}
+.key dd{margin:1px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:17px;font-weight:500;font-variant-numeric:tabular-nums}
+
+/* ---- plan svg internals ---- */
+.pl-wall{fill:var(--wall)}
+.pl-floor{fill:var(--floor)}
+.pl-grid{stroke:var(--grid);stroke-width:1;fill:none}
+.pl-glass{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.pl-swing{fill:none;stroke:var(--m-line);stroke-width:1.4;stroke-dasharray:7 5;opacity:.75}
+.pl-leaf{stroke:var(--m-line);stroke-width:2.4;fill:none}
+.pl-piece{fill:none;stroke:var(--m-line);stroke-width:2}
+.f-sleep{fill:var(--m-sleep)}
+.f-work{fill:var(--m-work)}
+.f-store{fill:var(--m-store)}
+.f-tech{fill:var(--m-tech)}
+.pl-detail{fill:none;stroke:var(--m-line);stroke-width:1.4;opacity:.7}
+.pl-pillow{fill:var(--sheet);stroke:var(--m-line);stroke-width:1.4}
+.pl-cone{fill:var(--accent);opacity:.09}
+.pl-net{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-dasharray:4 5}
+.pl-hook{fill:var(--accent)}
+.pl-name{fill:var(--ink);font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:600;font-size:14px;direction:rtl}
+.pl-sub{fill:var(--graphite);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px}
+.pl-net-lab{fill:var(--accent-deep);font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:600;font-size:11.5px;direction:rtl}
+.pl-out{fill:var(--graphite);font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:600;font-size:12.5px;direction:rtl}
+.pl-dim line{stroke:var(--graphite);stroke-width:1}
+.pl-dim text{fill:var(--graphite);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px}
+.pl-key line{stroke:var(--accent);stroke-width:1.4}
+.pl-key text{fill:var(--accent-deep);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:500}
+.pc{transition:opacity .18s ease}
+.plates[data-focus] .pc{opacity:.18}
+.plates[data-focus="sleep"] .pc[data-cat="sleep"],
+.plates[data-focus="work"] .pc[data-cat="work"],
+.plates[data-focus="store"] .pc[data-cat="store"],
+.plates[data-focus="tech"] .pc[data-cat="tech"]{opacity:1}
+
+/* ---- table ---- */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;min-width:600px;background:var(--sheet)}
+th,td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--hair);font-size:14.5px;vertical-align:top}
+thead th{background:var(--accent-soft);border-bottom:1px solid var(--rule);font-family:'Noto Kufi Arabic',sans-serif;font-size:14px;font-weight:700}
+thead th span{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.14em;color:var(--accent-deep);font-weight:400}
+tbody th{font-weight:600;color:var(--graphite);font-size:14px;width:24%}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+.dots{font-family:'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em;color:var(--accent);font-size:15px;display:block}
+.dots i{color:var(--rule);font-style:normal}
+td em{font-style:normal;color:var(--graphite);font-size:13.5px;display:block;margin-top:1px}
+.verdict{margin-top:22px;border:1px solid var(--accent);background:var(--accent-soft);padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.verdict b{font-family:'Noto Kufi Arabic',sans-serif;font-size:17px}
+.verdict p{font-size:15px;color:var(--ink);max-width:66ch}
+
+/* ---- steps + list ---- */
+.cols{display:grid;grid-template-columns:minmax(300px,1.25fr) minmax(260px,1fr);gap:clamp(22px,3vw,44px)}
+@media (max-width:820px){.cols{grid-template-columns:1fr}}
+.steps{counter-reset:s;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:26px 1fr;gap:12px;font-size:15px;line-height:1.6}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;color:var(--accent);padding-top:5px}
+.steps li>b,.steps li>span{grid-column:2}
+.steps b{font-weight:600}
+.steps span{color:var(--graphite);display:block;font-size:14px}
+.buy{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.buy li{background:var(--sheet);padding:9px 14px;display:flex;justify-content:space-between;gap:12px;font-size:14.5px;align-items:baseline}
+.buy .es{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;color:var(--graphite);text-align:left;direction:ltr}
+.check{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--sheet);border:1px solid var(--rule)}
+.check li{background:var(--sheet);outline:1px solid var(--rule)}
+.check label{display:flex;gap:11px;padding:12px 14px;cursor:pointer;align-items:flex-start;font-size:14.5px}
+.check input{margin:5px 0 0;accent-color:var(--accent);width:16px;height:16px;flex:none}
+.check input:checked+span{color:var(--graphite);text-decoration:line-through;text-decoration-color:var(--rule)}
+.check .u{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;color:var(--graphite);display:block}
+footer{margin-top:clamp(40px,6vw,72px);padding-top:22px;border-top:2px solid var(--ink);display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;align-items:baseline}
+footer p{color:var(--graphite);font-size:14px;max-width:56ch}
+footer .mono{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--graphite)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{body{background:#fff}.sheet{border:0;max-width:none}.chip{display:none}}
+</style>
+
+<div class="sheet" dir="rtl" lang="ar">
+
+  <header class="titleblock">
+    <div class="eyebrow"><span>ورقة ترتيب داخلي · interior layout</span></div>
+    <h1>ثلاث بلانات للغرفة</h1>
+    <p class="lede">قريت الصور ديالك: غرفة صغيرة، أرضية خشب، شباك واحد فالحيط البعيد، و الباب فالركن. عندك <strong>سرير كانابي</strong>، <strong>مكتب</strong>، <strong>كرسي غيمينغ</strong>، <strong>خزانة مازال فالكرطونة</strong>، <strong>تلفاز كبير</strong> و <strong>ناموسية</strong>. هادو ثلاث ترتيبات مرسومين بالقياس — ماشي ثلاث أفكار على قد بعضها، كل واحد فيهم كيربح شي حاجة و كيخسر شي حاجة. شوف أشمن تنازل قابلو، و ذاك هو البلان ديالك.</p>
+    <dl class="specs">
+      <div class="spec"><dt>قياس تقديري</dt><dd>2.80 × 3.60 م</dd></div>
+      <div class="spec"><dt>المساحة</dt><dd>10.1 م²</dd></div>
+      <div class="spec"><dt>السلّم</dt><dd>1:50 · شبكة 50 سم</dd></div>
+      <div class="spec"><dt>العناصر</dt><dd>6 قطع</dd></div>
+    </dl>
+  </header>
+
+  <section id="now">
+    <div class="sec-head">
+      <div class="eyebrow"><span>01 · التشخيص</span></div>
+      <h2>شنو كاين دابا فالغرفة</h2>
+      <p>هادشي لي بان ليا فالتصاور. ماشي انتقاد — هادو نقط البداية لي كيحددو البلان.</p>
+    </div>
+    <ul class="obs">
+      <li><b><span class="n">A1</span> التلفاز فالأرض</b><span>واقف على البلاستيك حدا الحيط. كياكل 0.7 م² تقريبا من الأرض، و مخاطرة إلا تحرك. الحل ماشي طاولة — الحل هو الحيط.</span></li>
+      <li><b><span class="n">A2</span> الخزانة مازال محلولاش</b><span>الكرطونة واقفة على الحيط الأيمن. ركّبها فبلاصتها النهائية مباشرة، ماشي فوسط البيت — ما تدوزش من الباب من بعد.</span></li>
+      <li><b><span class="n">A3</span> الحيطان خاوية بالكامل</b><span>ثلاث حيطان صافيين. فبيت 10 م²، الحيط هو التخزين الوحيد لي ما كياكلش الأرض.</span></li>
+      <li><b><span class="n">A4</span> السرير كانابي</b><span>كيتحل من الفوق. خاصو مجال خاوي من جيهة الرجلين، و ما تحطش حتى شي حاجة ثقيلة قدامو.</span></li>
+      <li><b><span class="n">A5</span> سلك خارج من الحيط فوق السرير</b><span>هادي نقطة ضو ديال الحيط جاهزة. حط فيها أپليك للقراية بدل لامبة كتاكل الطابلة.</span></li>
+      <li><b><span class="n">A6</span> بريزة وحدة ظاهرة</b><span>حدا التلفاز الحالي. قبل ما تحرك أي حاجة، خصك تخطط فين غادي يمشي السلك — ماشي من فوق الأرض.</span></li>
+    </ul>
+    <div class="note">
+      <span class="tag">افتراض</span>
+      <p>القياسات مقدّرة من التصاور: عرض 2.80 م، طول 3.60 م، الشباك فالنص-اليمين ديال الحيط البعيد، و الباب فالركن اليمين. عيّط ليا بالقياسات الحقيقية (فيها عرض الشباك و عرض الباب) و نعاود نرسم البلان بالضبط، ماشي بالتقريب.</p>
+    </div>
+  </section>
+
+  <section id="plans">
+    <div class="sec-head">
+      <div class="eyebrow"><span>02 · البلانات</span></div>
+      <h2>ثلاث ترتيبات، ثلاث أولويات</h2>
+      <p>كل بلان مرسوم من الفوق بنفس السلّم. دوز على الألوان تحت باش تشوف كل نوع ديال القطع فين كيمشي.</p>
+    </div>
+    <div class="legend">
+      <span class="lab">الألوان</span>
+      <button class="chip" data-cat="sleep" aria-pressed="false"><span class="sw"></span>نوم</button>
+      <button class="chip" data-cat="work" aria-pressed="false"><span class="sw"></span>خدمة</button>
+      <button class="chip" data-cat="store" aria-pressed="false"><span class="sw"></span>تخزين</button>
+      <button class="chip" data-cat="tech" aria-pressed="false"><span class="sw"></span>تلفاز</button>
+    </div>
+    <div class="plates" id="plates"></div>
+  </section>
+
+  <section id="compare">
+    <div class="sec-head">
+      <div class="eyebrow"><span>03 · المقارنة</span></div>
+      <h2>واش نختار</h2>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr>
+          <th scope="col">المعيار</th>
+          <th scope="col"><span>plan a</span>التوازن</th>
+          <th scope="col"><span>plan b</span>الضو و الهدوء</th>
+          <th scope="col"><span>plan c</span>منطقة الخدمة</th>
+        </tr></thead>
+        <tbody>
+          <tr><th scope="row">التلفاز من السرير</th>
+            <td><span class="dots">•••</span><em>قبالتك نيشان، 1.70 م</em></td>
+            <td><span class="dots">••<i>•</i></span><em>نيشان، ولكن الشباك وراه</em></td>
+            <td><span class="dots">•<i>••</i></span><em>بالزاوية، 2.9 م تقريبا</em></td></tr>
+          <tr><th scope="row">الضو على المكتب</th>
+            <td><span class="dots">••<i>•</i></span><em>من قدامك — شي مرات كيبهر</em></td>
+            <td><span class="dots">•••</span><em>من الجنب: أحسن حاجة للشاشة</em></td>
+            <td><span class="dots">•<i>••</i></span><em>حيط عاري، الضو من الور</em></td></tr>
+          <tr><th scope="row">أكبر بلاصة خاوية متصلة</th>
+            <td><span class="dots">•<i>••</i></span><em>حوالي 2.0 م² — 0.87 × 2.36</em></td>
+            <td><span class="dots">••<i>•</i></span><em>حوالي 2.7 م² — 1.58 × 1.70</em></td>
+            <td><span class="dots">•••</span><em>حوالي 3.5 م² — 1.56 × 2.25</em></td></tr>
+          <tr><th scope="row">عرض الممر</th>
+            <td><span class="dots">••<i>•</i></span><em>87 سم</em></td>
+            <td><span class="dots">••<i>•</i></span><em>87 سم</em></td>
+            <td><span class="dots">•••</span><em>1.56 م</em></td></tr>
+          <tr><th scope="row">الناموسية</th>
+            <td><span class="dots">•••</span><em>ركن كامل: جوج حيطان</em></td>
+            <td><span class="dots">••<i>•</i></span><em>ركن، ولكن حدا الباب</em></td>
+            <td><span class="dots">•<i>••</i></span><em>حدا الشباك — كتعرقل الفتح</em></td></tr>
+          <tr><th scope="row">راس السرير و الشباك</th>
+            <td><span class="dots">••<i>•</i></span><em>حدا الشباك، ماشي تحتو</em></td>
+            <td><span class="dots">•••</span><em>بعيد بزاف: لا برد لا ضو الصباح</em></td>
+            <td><span class="dots">•<i>••</i></span><em>الشباك فوق الرجلين</em></td></tr>
+          <tr><th scope="row">فتح الكانابي</th>
+            <td><span class="dots">•••</span><em>حر من جيهة الرجلين</em></td>
+            <td><span class="dots">•••</span><em>حر</em></td>
+            <td><span class="dots">••<i>•</i></span><em>من الجنب الأيمن فقط</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="verdict">
+      <b>الاختيار ديالي: البلان A</b>
+      <p>حيت هو الوحيد لي كيعطي التلفاز قبالة السرير نيشان، المكتب تحت الشباك، و السرير فركن مسدود بجوج حيطان للناموسية — بلا ما تخسر شي حاجة كبيرة. التنازل الوحيد ديالو هو ممر ديال 87 سم، و هادشي عادي فبيت 2.80 م.</p>
+      <p><strong>و لكن:</strong> إلا كنتي كتقضي أكثر وقت فالكرسي منّو فالسرير → <b>C</b>. إلا كتحس بالبرد ولا كيقلقك ضو الصباح على راسك → <b>B</b>.</p>
+    </div>
+  </section>
+
+  <section id="do">
+    <div class="sec-head">
+      <div class="eyebrow"><span>04 · التنفيذ</span></div>
+      <h2>بالترتيب، من فين تبدا</h2>
+      <p>الترتيب مهم: كل خطوة كتخلي لي من بعدها ساهلة. ما تبداش بالسرير.</p>
+    </div>
+    <div class="cols">
+      <ol class="steps">
+        <li><b>علّق التلفاز فالحيط قبل كل شي.</b><span>سوپور ثابت (fijo) ماشي متحرك — فبيت صغير الذراع المتحركة ما عندها فايدة و كتخرج 12 سم. كتربح 60×120 سم من الأرض و كتحيّد الطابلة السوداء.</span></li>
+        <li><b>حل الكرطونة و ركّب الخزانة فبلاصتها.</b><span>ركّبها راقدة فالبلاصة النهائية. خزانة مركّبة ما كتفوتش من باب 80 سم.</span></li>
+        <li><b>حط المكتب.</b><span>لصقو بالحيط تحت/حدا الشباك حسب البلان. خلّي 90 سم ورا المكتب للكرسي.</span></li>
+        <li><b>من بعد السرير.</b><span>هو أثقل حاجة، خليه للآخر. قبل ما تلصقو، جرّب حل الكانابي و شوف واش عندك المجال.</span></li>
+        <li><b>الناموسية: خطّاف واحد فالسقف.</b><span>فوق وسط السرير بالضبط. ولا بارّة ديال الريدو (barra) على الحيط فوق الراس إلا بغيتيها مفتوحة من قدام.</span></li>
+        <li><b>السلوك فالآخر.</b><span>ريگليطا وحدة ورا الخزانة ولا المكتب + كناليطا بيضاء فوق البلاصة. حتى سلك ما يعبر الأرض.</span></li>
+        <li><b>زربية 120×170 فالبلاصة الخاوية.</b><span>البلاصة بارد و كتردّ الصدى. الزربية كتحدد المنطقة و كتسخّن البيت بالعين.</span></li>
+        <li><b>الضو: استغل السلك لي خارج فوق السرير.</b><span>أپليك دافي 2700K للقراية + شريط LED ورا التلفاز. بلا ما تشعل الضو الكبير فالليل.</span></li>
+      </ol>
+      <div>
+        <span class="subhead">لائحة الشراء</span>
+        <ul class="buy">
+          <li><span>سوپور تلفاز ثابت</span><span class="es">soporte TV fijo</span></li>
+          <li><span>تاكوس حسب نوع الحيط</span><span class="es">tacos + broca</span></li>
+          <li><span>ريگليطا 4 مداخل + سلك طويل</span><span class="es">regleta 3 m</span></li>
+          <li><span>كناليطا بيضاء للسلوك</span><span class="es">canaleta 2 m</span></li>
+          <li><span>خطّاف سقف / بارّة ريدو</span><span class="es">gancho techo</span></li>
+          <li><span>زربية 120×170</span><span class="es">alfombra</span></li>
+          <li><span>شريط LED ورا التلفاز</span><span class="es">tira LED USB</span></li>
+          <li><span>فيلترو تحت رجلين الكرسي</span><span class="es">fieltros</span></li>
+        </ul>
+        <div class="note" style="margin-top:18px">
+          <span class="tag">مهم</span>
+          <p>قبل ما تثقب: عرف واش الحيط ديال الآجور ولا پلادور (pladur). الپلادور كيبغي تاكوس خاصين ديال التلفاز، و خصك تلقى المونتانطي ديال الحديد. إلا ما كنتيش متأكد، صيفط ليا تصويرة و نقولك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="measure">
+    <div class="sec-head">
+      <div class="eyebrow"><span>05 · القياسات</span></div>
+      <h2>قيس هاد الأرقام و صيفطهم ليا</h2>
+      <p>بهادو كنعاود نرسم البلان النهائي بالمليمتر بدل التقدير. سيفط الميتر و عمّر.</p>
+    </div>
+    <ul class="check" id="check">
+      <li><label><input type="checkbox" data-k="m1"><span>عرض البيت و طولو<span class="u">من الحيط للحيط، فمستوى الأرض</span></span></label></li>
+      <li><label><input type="checkbox" data-k="m2"><span>علو السقف<span class="u">مهم للناموسية و للخزانة</span></span></label></li>
+      <li><label><input type="checkbox" data-k="m3"><span>عرض الشباك و بعدو على الركن<span class="u">+ علو الحافة السفلية على الأرض</span></span></label></li>
+      <li><label><input type="checkbox" data-k="m4"><span>عرض الباب و لأي جيهة كيتحل<span class="u">+ بعد الباب على الركن</span></span></label></li>
+      <li><label><input type="checkbox" data-k="m5"><span>قياس السرير<span class="u">90 / 105 / 135 / 150 عرض</span></span></label></li>
+      <li><label><input type="checkbox" data-k="m6"><span>قياس الخزانة من الكرطونة<span class="u">عرض × عمق × علو، و واش أبواب سليدينگ</span></span></label></li>
+      <li><label><input type="checkbox" data-k="m7"><span>قياس المكتب<span class="u">إلا مازال ما شريتيهش، قوليا و نقترح</span></span></label></li>
+      <li><label><input type="checkbox" data-k="m8"><span>قد أشمن پوصة التلفاز<span class="u">+ فين كاينين البريزات بالضبط</span></span></label></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>كل الأرقام فهاد الورقة تقديرية من التصاور. صيفط ليا القياسات الحقيقية و نرسم البلان النهائي بالضبط، مع بلاصة كل بريزة و كل سلك.</p>
+    <span class="mono">ورقة 01 من 01 · سلّم 1:50</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var R={w:280,d:360,t:12,win:[150,250],door:[175,255]},P=62;
+function f(n){return Math.round(n*10)/10}
+function txt(x,y,cls,s,ltr){return '<text class="'+cls+'" x="'+f(x)+'" y="'+f(y)+'" text-anchor="middle"'+(ltr?' style="direction:ltr"':'')+'>'+s+'</text>'}
+
+/* one door leaf: hinge h, closed direction "along", outward normal N, length L */
+function leaf(h,along,N,L){
+  var p1=[h[0]+along[0]*L,h[1]+along[1]*L],p2=[h[0]+N[0]*L,h[1]+N[1]*L];
+  var sw=(along[0]*N[1]-along[1]*N[0])>0?1:0;
+  return '<path class="pl-swing" d="M '+f(p1[0])+' '+f(p1[1])+' A '+f(L)+' '+f(L)+' 0 0 '+sw+' '+f(p2[0])+' '+f(p2[1])+'"/>'
+       + '<line class="pl-leaf" x1="'+f(h[0])+'" y1="'+f(h[1])+'" x2="'+f(p2[0])+'" y2="'+f(p2[1])+'"/>';
+}
+function face(p){
+  if(p.open==='bottom')return{A:[p.x,p.y+p.h],B:[p.x+p.w,p.y+p.h],N:[0,1]};
+  if(p.open==='top')   return{A:[p.x+p.w,p.y],B:[p.x,p.y],N:[0,-1]};
+  if(p.open==='left')  return{A:[p.x,p.y+p.h],B:[p.x,p.y],N:[-1,0]};
+  return{A:[p.x+p.w,p.y],B:[p.x+p.w,p.y+p.h],N:[1,0]};
+}
+function band(p,side,t){
+  if(side==='top')return{x:p.x,y:p.y,w:p.w,h:t};
+  if(side==='bottom')return{x:p.x,y:p.y+p.h-t,w:p.w,h:t};
+  if(side==='left')return{x:p.x,y:p.y,w:t,h:p.h};
+  return{x:p.x+p.w-t,y:p.y,w:t,h:p.h};
+}
+function rect(o,cls,rx){return '<rect class="'+cls+'" x="'+f(o.x)+'" y="'+f(o.y)+'" width="'+f(o.w)+'" height="'+f(o.h)+'"'+(rx?' rx="'+rx+'"':'')+'/>'}
+
+function shell(){
+  var s='';
+  s+='<rect class="pl-wall" x="'+(-R.t)+'" y="'+(-R.t)+'" width="'+(R.w+2*R.t)+'" height="'+(R.d+2*R.t)+'"/>';
+  s+='<rect class="pl-floor" x="0" y="0" width="'+R.w+'" height="'+R.d+'"/>';
+  var g='';
+  for(var x=50;x<R.w;x+=50)g+='M '+x+' 0 V '+R.d+' ';
+  for(var y=50;y<R.d;y+=50)g+='M 0 '+y+' H '+R.w+' ';
+  s+='<path class="pl-grid" d="'+g+'"/>';
+  /* window */
+  s+='<rect class="pl-glass" x="'+R.win[0]+'" y="'+(-R.t)+'" width="'+(R.win[1]-R.win[0])+'" height="'+R.t+'"/>';
+  s+=txt((R.win[0]+R.win[1])/2,-22,'pl-out','الشباك');
+  /* door opening + leaf */
+  s+='<rect class="pl-floor" x="'+R.door[0]+'" y="'+R.d+'" width="'+(R.door[1]-R.door[0])+'" height="'+R.t+'"/>';
+  s+=leaf([R.door[1],R.d],[-1,0],[0,-1],R.door[1]-R.door[0]);
+  s+=txt((R.door[0]+R.door[1])/2,R.d+34,'pl-out','الباب');
+  return s;
+}
+
+function piece(p){
+  var s='',cx,cy,b,i;
+  if(p.k==='bed'){
+    s+=rect(p,'f-sleep pl-piece',3);
+    b=band(p,p.head,32);
+    var pb={x:b.x+7,y:b.y+7,w:b.w-14,h:b.h-14};
+    if(pb.w>pb.h){ var hw=(pb.w-7)/2;
+      s+=rect({x:pb.x,y:pb.y,w:hw,h:pb.h},'pl-pillow',3)+rect({x:pb.x+hw+7,y:pb.y,w:hw,h:pb.h},'pl-pillow',3);
+    }else{ var hh=(pb.h-7)/2;
+      s+=rect({x:pb.x,y:pb.y,w:pb.w,h:hh},'pl-pillow',3)+rect({x:pb.x,y:pb.y+hh+7,w:pb.w,h:hh},'pl-pillow',3);
+    }
+    var o=82;
+    if(p.head==='top')s+='<line class="pl-detail" x1="'+(p.x+4)+'" y1="'+(p.y+o)+'" x2="'+(p.x+p.w-4)+'" y2="'+(p.y+o)+'"/>';
+    if(p.head==='bottom')s+='<line class="pl-detail" x1="'+(p.x+4)+'" y1="'+(p.y+p.h-o)+'" x2="'+(p.x+p.w-4)+'" y2="'+(p.y+p.h-o)+'"/>';
+    if(p.head==='left')s+='<line class="pl-detail" x1="'+(p.x+o)+'" y1="'+(p.y+4)+'" x2="'+(p.x+o)+'" y2="'+(p.y+p.h-4)+'"/>';
+    if(p.head==='right')s+='<line class="pl-detail" x1="'+(p.x+p.w-o)+'" y1="'+(p.y+4)+'" x2="'+(p.x+p.w-o)+'" y2="'+(p.y+p.h-4)+'"/>';
+    cx=p.x+p.w/2; cy=p.y+p.h/2;
+    if(p.net){
+      var nx=Math.max(2,p.x-7),ny=Math.max(2,p.y-7),
+          nx2=Math.min(R.w-2,p.x+p.w+7),ny2=Math.min(R.d-2,p.y+p.h+7);
+      s+='<rect class="pl-net" x="'+nx+'" y="'+ny+'" width="'+(nx2-nx)+'" height="'+(ny2-ny)+'" rx="10"/>';
+      s+='<circle class="pl-hook" cx="'+cx+'" cy="'+(cy+30)+'" r="3.5"/>';
+      s+=txt(cx,cy+50,'pl-net-lab','ناموسية');
+    }
+    s+=txt(cx,cy-12,'pl-name',p.name)+txt(cx,cy+6,'pl-sub',p.dim,1);
+  }
+  else if(p.k==='desk'){
+    s+=rect(p,'f-work pl-piece',2);
+    var i6=6;
+    if(p.back==='top')s+='<line class="pl-detail" x1="'+(p.x+3)+'" y1="'+(p.y+i6)+'" x2="'+(p.x+p.w-3)+'" y2="'+(p.y+i6)+'"/>';
+    if(p.back==='bottom')s+='<line class="pl-detail" x1="'+(p.x+3)+'" y1="'+(p.y+p.h-i6)+'" x2="'+(p.x+p.w-3)+'" y2="'+(p.y+p.h-i6)+'"/>';
+    if(p.back==='left')s+='<line class="pl-detail" x1="'+(p.x+i6)+'" y1="'+(p.y+3)+'" x2="'+(p.x+i6)+'" y2="'+(p.y+p.h-3)+'"/>';
+    if(p.back==='right')s+='<line class="pl-detail" x1="'+(p.x+p.w-i6)+'" y1="'+(p.y+3)+'" x2="'+(p.x+p.w-i6)+'" y2="'+(p.y+p.h-3)+'"/>';
+    cx=p.x+p.w/2; cy=p.y+p.h/2;
+    s+=txt(cx,cy-1,'pl-name',p.name)+txt(cx,cy+16,'pl-sub',p.dim,1);
+  }
+  else if(p.k==='chair'){
+    var a={bottom:90,left:180,right:0,top:270}[p.back],r=p.r;
+    s+='<circle class="f-work pl-piece" cx="'+p.cx+'" cy="'+p.cy+'" r="'+r+'"/>';
+    var a0=(a-72)*Math.PI/180,a1=(a+72)*Math.PI/180,rr=r+4;
+    s+='<path class="pl-piece" d="M '+f(p.cx+rr*Math.cos(a0))+' '+f(p.cy+rr*Math.sin(a0))+' A '+rr+' '+rr+' 0 0 1 '+f(p.cx+rr*Math.cos(a1))+' '+f(p.cy+rr*Math.sin(a1))+'"/>';
+    s+=txt(p.cx,p.cy+5,'pl-name','كرسي');
+  }
+  else if(p.k==='ward'){
+    s+=rect(p,'f-store pl-piece',2);
+    var F=face(p),dx=F.B[0]-F.A[0],dy=F.B[1]-F.A[1],len=Math.hypot(dx,dy),U=[dx/len,dy/len],L=len/2;
+    s+=leaf(F.A,U,F.N,L)+leaf(F.B,[-U[0],-U[1]],F.N,L);
+    cx=p.x+p.w/2; cy=p.y+p.h/2;
+    s+=txt(cx,cy-1,'pl-name',p.name)+txt(cx,cy+16,'pl-sub',p.dim,1);
+  }
+  else if(p.k==='tv'){
+    var th=7,bar,lab;
+    if(p.wall==='bottom'){bar={x:p.a,y:R.d-th-3,w:p.b-p.a,h:th};lab=[(p.a+p.b)/2,R.d-20];}
+    else if(p.wall==='top'){bar={x:p.a,y:3,w:p.b-p.a,h:th};lab=[(p.a+p.b)/2,28];}
+    else if(p.wall==='right'){bar={x:R.w-th-3,y:p.a,w:th,h:p.b-p.a};lab=[R.w-40,(p.a+p.b)/2+5];}
+    else {bar={x:3,y:p.a,w:th,h:p.b-p.a};lab=[40,(p.a+p.b)/2+5];}
+    var c1,c2;
+    if(p.wall==='bottom'||p.wall==='top'){c1=[p.a,bar.y+th/2];c2=[p.b,bar.y+th/2];}
+    else{c1=[bar.x+th/2,p.a];c2=[bar.x+th/2,p.b];}
+    s+='<polygon class="pl-cone" points="'+f(c1[0])+','+f(c1[1])+' '+f(c2[0])+','+f(c2[1])+' '+f(p.aim[0])+','+f(p.aim[1])+'"/>';
+    s+=rect(bar,'f-tech');
+    s+=txt(lab[0],lab[1],'pl-name',p.name);
+  }
+  return '<g class="pc" data-cat="'+p.cat+'">'+s+'</g>';
+}
+
+function dimH(a,b,y,label,key){
+  var c=key?'pl-key':'pl-dim';
+  return '<g class="'+c+'"><line x1="'+a+'" y1="'+y+'" x2="'+b+'" y2="'+y+'"/>'
+    +'<line x1="'+a+'" y1="'+(y-5)+'" x2="'+a+'" y2="'+(y+5)+'"/>'
+    +'<line x1="'+b+'" y1="'+(y-5)+'" x2="'+b+'" y2="'+(y+5)+'"/>'
+    +txt((a+b)/2,y-7,'',label,1)+'</g>';
+}
+function dimV(a,b,x,label,key){
+  var c=key?'pl-key':'pl-dim',m=(a+b)/2;
+  return '<g class="'+c+'"><line x1="'+x+'" y1="'+a+'" x2="'+x+'" y2="'+b+'"/>'
+    +'<line x1="'+(x-5)+'" y1="'+a+'" x2="'+(x+5)+'" y2="'+a+'"/>'
+    +'<line x1="'+(x-5)+'" y1="'+b+'" x2="'+(x+5)+'" y2="'+b+'"/>'
+    +'<text x="'+(x-7)+'" y="'+m+'" text-anchor="middle" style="direction:ltr" transform="rotate(-90 '+(x-7)+' '+m+')">'+label+'</text></g>';
+}
+
+function plan(o){
+  var s=shell(),i;
+  for(i=0;i<o.pieces.length;i++)s+=piece(o.pieces[i]);
+  s+=dimH(0,R.w,-42,'280');
+  s+=dimV(0,R.d,-42,'360');
+  for(i=0;i<o.keys.length;i++){var k=o.keys[i];
+    s+=(k.t==='h'?dimH(k.a,k.b,k.at,k.label,1):dimV(k.a,k.b,k.at,k.label,1));}
+  return '<svg viewBox="'+(-P)+' '+(-P)+' '+(R.w+2*P)+' '+(R.d+2*P)+'" role="img" aria-label="'+o.alt+'">'+s+'</svg>';
+}
+
+var PLANS=[
+{code:'plan a',name:'التوازن',
+ thesis:'التلفاز قبالة السرير نيشان، المكتب تحت الشباك، و السرير فركن مسدود. أقل تنازل.',
+ alt:'بلان A: السرير على الحيط الأيسر راسو فالحيط البعيد، المكتب تحت الشباك، الخزانة على الحيط الأيمن، التلفاز معلق فحيط الباب قبالة السرير.',
+ cap:'PLAN A · التوازن · 1:50',
+ pieces:[
+  {k:'bed',cat:'sleep',x:0,y:0,w:135,h:190,head:'top',name:'السرير',dim:'135 × 190',net:1},
+  {k:'desk',cat:'work',x:160,y:0,w:120,h:58,back:'top',name:'المكتب',dim:'120 × 58'},
+  {k:'chair',cat:'work',cx:220,cy:92,r:30,back:'bottom'},
+  {k:'ward',cat:'store',x:222,y:150,w:58,h:100,open:'left',name:'الخزانة',dim:'100 × 58'},
+  {k:'tv',cat:'tech',wall:'bottom',a:5,b:125,aim:[67,190],name:'التلفاز'}],
+ keys:[{t:'h',a:135,b:222,at:135,label:'87'},{t:'v',a:190,b:352,at:67,label:'170'}],
+ plus:['التلفاز معلق فحيط الباب، قبالة رجلين السرير نيشان — 1.70 م من الرجلين و 3.60 م من المخدة. هادي المسافة المثالية لتلفاز 50–55 پوصة 4K.',
+       'المكتب تحت الشباك بالضبط: ضو طبيعي على الطابلة نهار كامل، و الكرسي عندو 90 سم ورا المكتب.',
+       'راس السرير فالركن المسدود، حدا الشباك ماشي تحتو — لا برد لا ضو الصباح على وجهك.',
+       'الناموسية ساهلة: جوج حيطان كيمسكوها، و خطاف واحد فالسقف كيكفي.',
+       'الكانابي كيتحل على مجال خاوي كامل من جيهة الرجلين.'],
+ minus:['الممر بين السرير و الخزانة 87 سم — كافي و لكن ماشي واسع.',
+        'الأرض الخاوية موزعة على جوج بلايص، ماكاينش وسط كبير واحد.'],
+ stats:[['من السرير للتلفاز','1.70 م'],['الممر','87 سم'],['أكبر بلاصة خاوية','2.0 م²']]},
+
+{code:'plan b',name:'الضو و الهدوء',
+ thesis:'راس السرير بعيد على الشباك و على الباب. المكتب كياخذ الضو من الجنب — أحسن شي للشاشة.',
+ alt:'بلان B: السرير على الحيط الأيسر راسو فحيط الباب، التلفاز معلق فالحيط البعيد حدا الشباك، المكتب و الخزانة على الحيط الأيمن.',
+ cap:'PLAN B · الضو و الهدوء · 1:50',
+ pieces:[
+  {k:'bed',cat:'sleep',x:0,y:170,w:135,h:190,head:'bottom',name:'السرير',dim:'135 × 190',net:1},
+  {k:'tv',cat:'tech',wall:'top',a:8,b:128,aim:[68,170],name:'التلفاز'},
+  {k:'desk',cat:'work',x:222,y:40,w:58,h:120,back:'right',name:'المكتب',dim:'120 × 58'},
+  {k:'chair',cat:'work',cx:190,cy:100,r:30,back:'left'},
+  {k:'ward',cat:'store',x:222,y:180,w:58,h:100,open:'left',name:'الخزانة',dim:'100 × 58'}],
+ keys:[{t:'h',a:135,b:222,at:155,label:'87'},{t:'v',a:6,b:168,at:68,label:'170'}],
+ plus:['راس السرير فأبعد نقطة على الشباك: لا هواء بارد فالشتا، لا ضو الصباح فالعينين.',
+       'المكتب على الحيط الأيمن و الشباك على يسارك — الضو كيجي من الجنب، ما كيبهرش الشاشة و ما كيديرش الظل على يدك.',
+       'الباب كيتحل على بلاصة خاوية، ماشي على السرير. الغرفة كتبان أكبر ملي تدخل.',
+       'أكبر بلاصة خاوية (1.58 × 1.70 م) كاينة فوسط الغرفة قدام التلفاز.'],
+ minus:['التلفاز على نفس الحيط ديال الشباك: نهارا كيبقى الضو وراه. خصك تهبط البرسيانا باش تشوف مزيان.',
+        'أول حاجة كتشوف ملي تدخل هي راس السرير — أقل ترتيب من A بالعين.'],
+ stats:[['من السرير للتلفاز','1.70 م'],['الممر','87 سم'],['أكبر بلاصة خاوية','2.7 م²']]},
+
+{code:'plan c',name:'منطقة الخدمة',
+ thesis:'السرير كيتحصر فالثلث البعيد، و الباقي كامل كيولي منطقة خدمة و غيمينغ خاوية.',
+ alt:'بلان C: السرير معرض فالجزء البعيد تحت الشباك، المكتب على الحيط الأيسر، التلفاز معلق فالحيط الأيمن قبالة الكرسي، و الخزانة حدا الباب.',
+ cap:'PLAN C · منطقة الخدمة · 1:50',
+ pieces:[
+  {k:'bed',cat:'sleep',x:0,y:0,w:190,h:135,head:'left',name:'السرير',dim:'135 × 190',net:1},
+  {k:'desk',cat:'work',x:0,y:150,w:58,h:120,back:'left',name:'المكتب',dim:'120 × 58'},
+  {k:'chair',cat:'work',cx:92,cy:210,r:30,back:'right'},
+  {k:'tv',cat:'tech',wall:'right',a:150,b:270,aim:[92,210],name:'التلفاز'},
+  {k:'ward',cat:'store',x:10,y:302,w:100,h:58,open:'top',name:'الخزانة',dim:'100 × 58'}],
+ keys:[{t:'h',a:92,b:278,at:288,label:'188'},{t:'v',a:0,b:135,at:240,label:'135'}],
+ plus:['المكتب و التلفاز فمواجهة تامة على 1.88 م: هادي مسافة غيمينغ مثالية، كتشوف الشاشة الكبيرة و انت فالكرسي بلا ما تلوي رقبتك.',
+       'أكبر أرض خاوية فالثلاثة: 1.56 × 2.25 م = 3.5 م² متصلين. تقدر تصلي، تتمرن، ولا تدور بالكرسي بلا ما تصدم شي حاجة.',
+       'منطقة النوم مفصولة بصريا على منطقة الخدمة — كيعاون بزاف على التركيز و على النوم.',
+       'الخزانة حدا الباب: كتلبس و كتخرج فنفس البلاصة.'],
+ minus:['الشباك فوق رجلين السرير: ضو الصباح كيدخل مباشرة على الفراش.',
+        'الناموسية كتجي حدا الشباك — كتعرقلك ملي تحل ولا تسد.',
+        'من السرير التلفاز كيبان بالزاوية على 2.9 م، ماشي نيشان.'],
+ stats:[['من الكرسي للتلفاز','1.88 م'],['الممر','1.56 م'],['أكبر بلاصة خاوية','3.5 م²']]}
+];
+
+function li(arr,kind){var s='',i;for(i=0;i<arr.length;i++)s+='<li class="'+kind+'"><span class="mk">'+(kind==='plus'?'+':'—')+'</span><span>'+arr[i]+'</span></li>';return s}
+
+var host=document.getElementById('plates'),html='',i,j,o;
+for(i=0;i<PLANS.length;i++){o=PLANS[i];
+  var st='';for(j=0;j<o.stats.length;j++)st+='<div class="key"><dt>'+o.stats[j][0]+'</dt><dd>'+o.stats[j][1]+'</dd></div>';
+  html+='<article class="plate">'
+    +'<div class="plate-head"><span class="plate-code">'+o.code+'</span><h3>'+o.name+'</h3><p class="plate-thesis">'+o.thesis+'</p></div>'
+    +'<div class="plate-body"><div class="drawing">'+plan(o)+'<p class="plan-cap">'+o.cap+'</p></div>'
+    +'<div class="notes"><dl class="keys">'+st+'</dl>'
+    +'<div><span class="subhead">علاش</span><ul class="why">'+li(o.plus,'plus')+'</ul></div>'
+    +'<div><span class="subhead">التنازل</span><ul class="why">'+li(o.minus,'minus')+'</ul></div>'
+    +'</div></div></article>';
+}
+host.innerHTML=html;
+
+/* legend focus */
+var chips=document.querySelectorAll('.chip');
+for(i=0;i<chips.length;i++){chips[i].addEventListener('click',function(){
+  var on=this.getAttribute('aria-pressed')==='true',c=this.getAttribute('data-cat'),k;
+  for(k=0;k<chips.length;k++)chips[k].setAttribute('aria-pressed','false');
+  if(on){host.removeAttribute('data-focus');}
+  else{this.setAttribute('aria-pressed','true');host.setAttribute('data-focus',c);}
+});}
+
+/* measurement checklist */
+var boxes=document.querySelectorAll('#check input');
+function store(k,v){try{localStorage.setItem('roomplan.'+k,v?'1':'')}catch(e){}}
+for(i=0;i<boxes.length;i++){(function(b){
+  try{if(localStorage.getItem('roomplan.'+b.dataset.k))b.checked=true}catch(e){}
+  b.addEventListener('change',function(){store(b.dataset.k,b.checked)});
+})(boxes[i]);}
+})();
+</script>
